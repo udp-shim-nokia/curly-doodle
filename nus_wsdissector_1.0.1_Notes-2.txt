@@ -1,0 +1,43 @@
+-- Nokia UDP SHIM Protocol Wireshark Dissector
+-- Version 1.0.1
+-- 2021, March
+-- Released: 2021-03-24
+
+Assumptions Made
+
+	About SHIM header:
+
+	1) Direction field: 		0 = Ingress and 1 = Egress
+	2) Mirror Type field: 		0 = Ethernet and 1 = IP-Only
+	3) Filter Action field: 	0 = Drop and 1 = Accept
+	4) Interface-Ref-Type field:	0 = If-Index and 1 = sap-instance-id
+
+
+	About byte order
+
+	1) When doing tests, Big Endian mode was the one whose results made sense.
+		For example, Version field is expected to be the same for all packets 
+		from a session and should not be equal to 0. The same kind of analisys 
+		was valid for Interface field.
+
+Configuration
+
+	At top of our source file there is two variables that can be changed to reflect
+	the desired coniguration:
+
+	1) is_litle_endian
+		-- Set to false by default to enable Big Endian mode
+		local is_litle_endian   = false	
+
+		-- Set to true if you want little endian
+		local is_litle_endian   = true
+	
+	2) shim_port
+		-- Port used in pcap files sent. You can set to desired port if necessary
+		local shim_port         = 30000
+
+	3) ethernet_dissector_name
+		-- Possible Ethernet dissectors: eth_withoutfcs, eth_withfcs or eth_maybefcs
+		local ethernet_dissector_name = 'eth_withoutfcs'
+
+		
