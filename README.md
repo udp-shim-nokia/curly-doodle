@@ -10,7 +10,7 @@ We have included .PCAP files as samples to be verify that the dissector is worki
 
 NOTE: .png files provided to show how the decode will look if properly installed. 
 
- NOTE: .lua file is configured to use UDP source/dest port 3000. If you're using a different src/dst combination to deliver to a collector, change this port accordingly in the .lua file or modify your SROS router config to use port 3000.
+ NOTE: .lua file is configured to use UDP source/dest port 30000. If you're using a different src/dst combination to deliver to a collector, change this port accordingly in the .lua file or modify your SROS router config to use port 30000.
 
 
 
